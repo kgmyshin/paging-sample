@@ -17,6 +17,7 @@ internal class ItemAdapter(context: Context) : PagedListAdapter<Item, ItemViewHo
     }
   }
 
+  var onItemClickListener: OnItemClickListener? = null
   private val inflater = LayoutInflater.from(context)
 
   override fun onCreateViewHolder(
@@ -31,5 +32,8 @@ internal class ItemAdapter(context: Context) : PagedListAdapter<Item, ItemViewHo
   override fun onBindViewHolder(
     holder: ItemViewHolder,
     position: Int
-  ) = holder.bind(getItem(position))
+  ) = holder.bind(
+    getItem(position),
+    onItemClickListener
+  )
 }

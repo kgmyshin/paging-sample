@@ -23,8 +23,16 @@ internal class ItemViewHolder(
     )
   }
 
-  fun bind(item: Item?) {
+  fun bind(
+    item: Item?,
+    onItemClickListener: OnItemClickListener?
+  ) {
     binding.item = item
+    binding.root.setOnClickListener {
+      if (item != null && onItemClickListener != null) {
+        onItemClickListener.onClick(item)
+      }
+    }
     binding.executePendingBindings()
   }
 }

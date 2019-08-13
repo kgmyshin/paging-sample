@@ -1,5 +1,7 @@
 package com.kgmyshin.readonly
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,13 @@ import com.kgmyshin.data.impl.ItemRepositoryImpl
 import com.kgmyshin.databinding.ActivityItemListBinding
 
 class ReadOnlyActivity : AppCompatActivity() {
+
+  companion object {
+    fun createIntent(context: Context): Intent = Intent(
+      context,
+      ReadOnlyActivity::class.java
+    )
+  }
 
   private val viewModel: ItemViewModel by viewModels {
     ItemViewModelFactory(ItemRepositoryImpl())
