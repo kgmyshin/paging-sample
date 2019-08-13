@@ -16,7 +16,7 @@ internal class ItemRepositoryImpl : ItemRepository {
     val newItemList = (1..30).map {
       Item(
         id = ItemId(30 * page + it.toLong()),
-        name = "${30 * page + it}",
+        name = "アイテム - ${30 * page + it}",
         checked = false
       )
     }
