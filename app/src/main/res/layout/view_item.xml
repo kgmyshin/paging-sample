@@ -1,34 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
 
   <data>
-    <variable name="item" type="com.kgmyshin.data.Item"/>
+
+    <variable
+      name="item"
+      type="com.kgmyshin.data.Item" />
   </data>
 
 
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="24dp"
-  >
+    android:padding="24dp">
 
     <CheckBox
       android:id="@+id/check_box"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:checked="@{item.checked}"
+      android:text=""
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-    />
+      app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      app:layout_constraintStart_toEndOf="@+id/check_box"
-      app:layout_constraintTop_toTopOf="parent"
       android:layout_marginStart="8dp"
       android:text="@{item.name}"
-    />
+      app:layout_constraintBaseline_toBaselineOf="@id/check_box"
+      app:layout_constraintStart_toEndOf="@+id/check_box"
+      app:layout_constraintTop_toTopOf="parent" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
