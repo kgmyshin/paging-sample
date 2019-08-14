@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.kgmyshin.databinding.ActivityMainBinding
 import com.kgmyshin.readonly.ReadOnlyActivity
 import com.kgmyshin.updatable.ng.NgActivity
+import com.kgmyshin.updatable.room.RoomActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,6 +40,11 @@ class MainActivity : AppCompatActivity() {
     NG("ng") {
       override fun startActivity(context: Context) {
         context.startActivity(NgActivity.createIntent(context))
+      }
+    },
+    ROOM("room") {
+      override fun startActivity(context: Context) {
+        context.startActivity(RoomActivity.createIntent(context))
       }
     };
 

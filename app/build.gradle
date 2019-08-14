@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
   compileSdkVersion 28
@@ -42,6 +41,9 @@ dependencies {
   implementation 'androidx.paging:paging-runtime:2.1.0'
   implementation 'androidx.recyclerview:recyclerview:1.1.0-beta02'
   implementation 'androidx.activity:activity-ktx:1.1.0-alpha02'
+  implementation 'androidx.room:room-runtime:2.1.0-alpha04'
+  kapt 'androidx.room:room-compiler:2.1.0-alpha04'
+  implementation "androidx.room:room-coroutines:2.1.0-alpha04"
 
   implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
   implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.1'
