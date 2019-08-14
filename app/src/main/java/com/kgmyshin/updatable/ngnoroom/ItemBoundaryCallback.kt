@@ -1,4 +1,4 @@
-package com.kgmyshin.updatable.noroom
+package com.kgmyshin.updatable.ngnoroom
 
 import androidx.paging.PagedList
 import com.kgmyshin.data.Item
@@ -47,5 +47,9 @@ internal class ItemBoundaryCallback(
         )
       )
     }
+  }
+
+  override fun onItemAtFrontLoaded(itemAtFront: Item) {
+    super.onItemAtFrontLoaded(itemAtFront)
   }
 }

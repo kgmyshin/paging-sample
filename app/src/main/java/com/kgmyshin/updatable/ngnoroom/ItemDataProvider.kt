@@ -1,13 +1,12 @@
-package com.kgmyshin.updatable.noroom
+package com.kgmyshin.updatable.ngnoroom
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.kgmyshin.data.Item
-import com.kgmyshin.data.ItemId
 
 internal class ItemDataProvider {
 
-  val sourceLiveData = MutableLiveData<DataSource<ItemId, Item>>()
+  val sourceLiveData = MutableLiveData<DataSource<Int, Item>>()
 
   private val _pageList = mutableListOf<Page>()
   val pageList: List<Page>

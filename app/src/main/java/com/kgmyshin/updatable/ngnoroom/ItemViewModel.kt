@@ -1,4 +1,4 @@
-package com.kgmyshin.updatable.noroom
+package com.kgmyshin.updatable.ngnoroom
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

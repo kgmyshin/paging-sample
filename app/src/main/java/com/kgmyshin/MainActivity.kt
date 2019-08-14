@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import com.kgmyshin.databinding.ActivityMainBinding
 import com.kgmyshin.readonly.ReadOnlyActivity
 import com.kgmyshin.updatable.ng.NgActivity
+import com.kgmyshin.updatable.ngnoroom.NgNoRoomActivity
+import com.kgmyshin.updatable.noroom.NoRoomActivity
 import com.kgmyshin.updatable.room.RoomActivity
 
 class MainActivity : AppCompatActivity() {
@@ -45,6 +47,16 @@ class MainActivity : AppCompatActivity() {
     ROOM("room") {
       override fun startActivity(context: Context) {
         context.startActivity(RoomActivity.createIntent(context))
+      }
+    },
+    NO_ROOM("no room") {
+      override fun startActivity(context: Context) {
+        context.startActivity(NoRoomActivity.createIntent(context))
+      }
+    },
+    NG_NO_ROOM("ng no room") {
+      override fun startActivity(context: Context) {
+        context.startActivity(NgNoRoomActivity.createIntent(context))
       }
     };
 

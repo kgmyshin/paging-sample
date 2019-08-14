@@ -1,4 +1,4 @@
-package com.kgmyshin.updatable.noroom
+package com.kgmyshin.updatable.ngnoroom
 
 import android.content.Context
 import android.content.Intent
@@ -14,11 +14,11 @@ import com.kgmyshin.data.Item
 import com.kgmyshin.data.impl.ItemRepositoryImpl
 import com.kgmyshin.databinding.ActivityItemListBinding
 
-class NoRoomActivity : AppCompatActivity() {
+class NgNoRoomActivity : AppCompatActivity() {
   companion object {
     fun createIntent(context: Context): Intent = Intent(
       context,
-      NoRoomActivity::class.java
+      NgNoRoomActivity::class.java
     )
   }
 

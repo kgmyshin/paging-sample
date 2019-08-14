@@ -20,16 +20,17 @@ internal class ItemBoundaryCallback(
 
   override fun onZeroItemsLoaded() {
     super.onZeroItemsLoaded()
+    if (pageList.isNotEmpty() && pageList[0].isEndPage) return
     boundaryCallbackScope.launch {
       val itemList = itemRepository.findAll(page = 0)
       if (itemList.isNotEmpty()) {
         bulkInsertToDatabase(itemList)
       }
+      pageList.clear()
       pageList.add(
         Page(
-          index = 0,
           lastItem = itemList.lastOrNull(),
-          hasNext = itemList.isNotEmpty()
+          isEndPage = itemList.isEmpty()
         )
       )
     }
@@ -39,20 +40,19 @@ internal class ItemBoundaryCallback(
     super.onItemAtEndLoaded(itemAtEnd)
 
     val currentPage = pageList.firstOrNull { it.lastItem == itemAtEnd }
-
-    if (currentPage == null || !currentPage.hasNext) return
+    if (currentPage == null || currentPage.isEndPage) return
+    val currentPageIndex = pageList.indexOf(currentPage)
 
     boundaryCallbackScope.launch {
-      val nextPageIndex = currentPage.index + 1
+      val nextPageIndex = currentPageIndex + 1
       val itemList = itemRepository.findAll(page = nextPageIndex)
       if (itemList.isNotEmpty()) {
         bulkInsertToDatabase(itemList)
       }
       pageList.add(
         Page(
-          index = nextPageIndex,
           lastItem = itemList.lastOrNull(),
-          hasNext = itemList.isNotEmpty()
+          isEndPage = itemList.isEmpty()
         )
       )
     }
@@ -64,8 +64,7 @@ internal class ItemBoundaryCallback(
   }
 
   data class Page(
-    val index: Int,
     val lastItem: Item?,
-    val hasNext: Boolean = true
+    val isEndPage: Boolean = true
   )
 }
